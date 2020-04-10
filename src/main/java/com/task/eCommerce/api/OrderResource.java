@@ -28,6 +28,11 @@ public class OrderResource {
                 .orElseThrow(() -> new IllegalArgumentException("No order present with orderId"));
     }
 
+    @GetMapping("fetchAllOrders")
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
+    }
+
     @PostMapping("placeOrder")
     public Order placeSingleOrder(OrderDetailDTO orderDetailDTO) throws Exception {
         return orderService.placeSingleOrder(orderDetailDTO);
